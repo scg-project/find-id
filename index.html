@@ -3,16 +3,12 @@
 
 <head>
     <meta charset="UTF-8" />
-
-
-
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta data-rh="true" property="og:type" content="website"/><meta data-rh="true" property="og:title" content="Find ID"/><meta data-rh="true" property="og:description" content="We are here to help you get your first ID. "/><meta data-rh="true" property="og:url" content="http://www.firststep.id"/>
+    <meta data-rh="true" property="og:type" content="website"/><meta data-rh="true" property="og:title" content="Find ID"/><meta data-rh="true" property="og:description" content="We are here to help you refind your ID. "/><meta data-rh="true" property="og:url" content="http://www.firststep.id"/>
     <meta data-rh="true" property="og:image" content="/nc_assets/img/nc-icon/id-card.jpeg" /> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="css/fonts.css">
@@ -34,9 +30,9 @@
                 <div class="mb-0 tm-img-overlay-wrap">
                     <div class="tm-img-overlay"></div>
                     <div class="tm-img-overlay-text text-white p-5">
-                        <h4 class="mb-4">Welcome to Find ID!</h4>
+                        <h4 class="mb-4">Welcome to FirstStep.id!</h4>
                         <p class="tm-small">
-                            We are here to help you get your first ID. Answer the following questions and we’ll direct you to a starting point for obtaining official identification.
+                            We are here to help you obtain your ID. Answer the following questions and we’ll direct you to a starting point for obtaining official identification.
                         </p>
                     </div>
                 </div>
@@ -46,24 +42,25 @@
                             <template v-for="question in form" v-if="checkCriteria(question)">
                                 <div class="field">
                                     <label class="label">{{ question.question }}</label>
-                                    <div v-if="question.type == 'boolean'" class="control">
-                                        <label class="radio">
+                                    <div v-if="question.type == 'boolean'" class="control" >
+                                        <label class="radio" onclick="hideURL()">
                                             <input type="radio" :value="true" v-model="question.answer">
                                             Yes
                                         </label>
-                                        <label class="radio">
+                                        <label class="radio" onclick="hideURL()">
                                             <input type="radio" :value="false" v-model="question.answer">
-                                            No
+                                               No
                                         </label>
                                     </div>
                                     <div v-if="question.type == 'list'">
                                         <div v-for="choice in question.choices"><label class="checkbox">
-                                            <input v-model="choice.answer" type="checkbox">
+                                            <input v-model="choice.answer" type="checkbox" onclick="hideURL()">
                                             {{ choice.text }}
                                         </label></div>
                                     </div>
+                                    
                                     <div v-if="question.type == 'state'" class="control">
-                                        <div class="select">
+                                        <div class="select" onclick="hideURL()">
                                             <select v-model="question.answer">
                                                 <option value="AL">Alabama</option>
                                                 <option value="AK">Alaska</option>
@@ -122,7 +119,7 @@
                                         </div>
                                     </div>
                                     <div v-if="question.type == 'country'" class="control">
-                                        <div class="select">
+                                        <div class="select" onclick="hideURL()">
                                             <select v-model="question.answer">
                                                 <option value="Afghanistan">Afghanistan</option>
                                                 <option value="Albania">Albania</option>
@@ -352,6 +349,7 @@
                         <div v-if="loading == true">Loading...</div>
                     </br>
                     <h4><div><a id="url" hidden ></a></div><h4>
+                    <button class="button is-link" type="button" id="copyButton" hidden>Copy The Link</button><br><br>
                     </div>
                 </section>
                 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
@@ -362,7 +360,7 @@
             
 
     <footer>
-      <span>Copyright 2020 Second Chances</span>
+      <span>Copyright 2020 Second Chance Gap</span>
       <span>Designed by Santa Clara University</span>
     </footer>
     
