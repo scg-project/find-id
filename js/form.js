@@ -12,11 +12,19 @@ const form = [{
         type: "boolean",
     },
     {
+        name: "socialSec",
+        question: "Do you have a social security number?",
+        if: {
+            birthCert: true,
+        },
+        type: "boolean",
+    },
+    {
         name: "docsState1",
         question: "In which state or territory are you applying for State ID?",
         if: {
-            birthCert: true,
-            birthCertUS: true,
+            birthCert:true,
+            socialSec: true,
         },
         type: "state",
         answer: "AL"
@@ -25,14 +33,12 @@ const form = [{
         name: "typeID",
         question: "What type(s) of valid, unexpired ID do you own?",
         if: {
-            birthCert: true,
-            birthCertUS: true,
+            socialSec: true,
+            birthCert:true
         },
-        choices: [{
-                name: "socialSec",
-                text: "Social Security Card",
-                answer: false,
-            },
+      
+         choices: [
+                
             {
                 name: "stateID",
                 text: "State ID",
@@ -62,34 +68,78 @@ const form = [{
         name: "birthCertDocs",
         question: "Do you have documentation authorizing you to be in the US?",
         if: {
-            birthCert: true,
-            birthCertUS: false,
+            birthCert:true,
+            birthCertUS:false,
+            socialSec: false,
         },
         type: "boolean",
     },
     {
-        name: "docsState",
-        question: "In which state or territory are you applying for State ID?",
+        name: "SocialCard",
+        question: "Press Submit",
         if: {
-            birthCert: true,
-            birthCertUS: false,
-            birthCertDocs: true,
+            birthCert:true,
+            birthCertUS:true,
+            socialSec: false, 
+
         },
-        type: "state",
-        answer: "AL",
-        submit: 1,
+        type: "Submit",
+        submit:5,
     },
     {
-        name: "docsCountry",
+        name: "SocialCard",
+        question: "Press Submit",
+        if: {
+            birthCert:true,
+            birthCertUS:false,
+            socialSec: false,
+            birthCertDocs: true,
+
+
+        },
+        type: "Submit",
+        submit:5,
+    },
+
+
+    // {
+    //     name: "docsState",
+    //     question: "In which state or territory are you applying for State ID?",
+    //     if: {
+    //         birthCert: true,
+    //         birthCertUS: false,
+    //         birthCertDocs: true,
+    //         socialSec: true, 
+    //     },
+    //     type: "state",
+    //     answer: "AL",
+    //     submit: 1,
+    // },
+    // {
+    //     name: "docsCountry",
+    //     question: "What is your country of origin?",
+    //     if: {
+    //         birthCert: false,
+    //         birthCertUS: false,
+    //         birthCertDocs: false,
+    //     },
+    //     type: "country",
+    //     submit: 2,
+    // },
+    {
+        name: "docsCountry2",
         question: "What is your country of origin?",
         if: {
             birthCert: true,
             birthCertUS: false,
-            birthCertDocs: false,
+            socialSec:false,
+            birthCertDocs:false
+
         },
         type: "country",
         submit: 2,
-    },
+    }
+    ,
     {
         name: "bornUS",
         question: "Were you born in the US or a US territory, born abroad to US parents, or were born abroad and adopted by US parents?",
