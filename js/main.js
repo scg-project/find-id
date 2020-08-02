@@ -105,7 +105,7 @@ let app = new Vue({
 function hideURL() {
     document.getElementById('url').hidden = true;
     document.getElementById('copyButton').hidden = true;
-    
+
 
 }
 

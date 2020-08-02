@@ -20,7 +20,29 @@
 
 
 
-
+* {
+    box-sizing: border-box;
+  }
+  
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 500px) {
+    .column {
+      width: 100%;
+    }
+  
   
 @font-face {font-family: 'Mont';font-weight: bold;src: url('webfonts/3A8B1C_0_0.eot');src: url('webfonts/3A8B1C_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3A8B1C_0_0.woff2') format('woff2'),url('webfonts/3A8B1C_0_0.woff') format('woff'),url('webfonts/3A8B1C_0_0.ttf') format('truetype');}
 @font-face {font-family: 'Mont';font-weight: normal;src: url('webfonts/3A8B1D_0_0.eot');src: url('webfonts/3A8B1D_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/3A8B1D_0_0.woff2') format('woff2'),url('webfonts/3A8B1D_0_0.woff') format('woff'),url('webfonts/3A8B1D_0_0.ttf') format('truetype');}
