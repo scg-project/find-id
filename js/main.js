@@ -47,7 +47,7 @@ let app = new Vue({
 				return `get_embassy/${country}`;
 			} else if (path == 3) {
 				const state = this.form.find((q) => q.name == 'bornState');
-				return `/get_url/vital_records/${state.answer}`;
+				return `/get_url/vital_records/?state=${state.answer}`;
 			} else if (path == 4) {
 				let country = this.form.find((q) => q.name == 'bornCountry').answer;
 				country = country.toLowerCase().replace(/ /g, '-');
@@ -59,7 +59,7 @@ let app = new Vue({
 		},
 		doRequest(path) {
 			const a = this.getRequest(path);
-			console.log(a);
+			console.log('a', a);
 			this.loading = true;
 
 			if (a.includes('ssa.gov')) {
